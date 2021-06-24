@@ -16,6 +16,8 @@ public class MaxAbsoluteDifference {
 	 * f(1, 2) = f(2, 1) = |1 - 3| + |1 - 2| = 3
 	 * f(1, 3) = f(3, 1) = |1 - (-1)| + |1 - 3| = 4
 	 * f(2, 3) = f(3, 2) = |3 - (-1)| + |2 - 3| = 5
+	 * output
+	 * 
 	 * So, we return 5.
 	 */
 	

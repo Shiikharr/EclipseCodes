@@ -97,6 +97,88 @@ public class SinglyLinkedList {
 		previous.next=current.next;
 		}
 	}
+	public void findMid()
+	{
+		int pos=lengthOfLL()/2;
+		int c=1;
+		ListNode current=head;
+		while(c<=pos)
+		{
+			current=current.next;
+			c++;
+		}
+		System.out.println("The mid element is:"+current.data);
+	}
+	public void delAtMid()
+	{
+		if(head==null)
+			System.out.println(head.data);
+		int s=0;
+		ListNode current1=head;
+		while(current1!=null)
+		{
+			current1=current1.next;
+			s++;
+		}
+		int pos=s/2;
+		int c=1;
+		ListNode previous=head;
+		while(c<pos)
+		{
+			previous=previous.next;
+			c++;
+		}
+		ListNode current=previous.next;
+		previous.next=current.next;
+	}
+	
+	public void findnthFromLast(int n)
+	{
+		ListNode current=head;
+		int size=lengthOfLL();
+		int pos=size-n;
+		int c=0;
+		while(c<pos)
+		{
+			current=current.next;
+			c++;
+		}
+		System.out.println("The "+n+" element from the last is:"+current.data);
+	}
+	
+	public boolean searchElement(int n)
+	{
+		ListNode current=head;
+		int c=0;
+		while(current!=null)
+		{
+			if(current.data==n)
+				break;
+			else
+				c++;
+			current=current.next;
+		}
+		if(c==lengthOfLL())
+		return false;
+		return true;
+	}
+	public ListNode reverseLL()
+	{
+		if(head==null)
+			return head;
+		ListNode current=head;
+		ListNode previous=null;
+		ListNode next=null;
+		while(current!=null)
+		{
+			next=current.next;
+			current.next=previous;
+			previous=current;
+			current=next;
+		}
+		return previous;
+	}
+	
 	
 	//Finding length of linkedList
 	public int lengthOfLL()
@@ -161,6 +243,38 @@ public class SinglyLinkedList {
 		System.out.println("\nThe list after deleting element at a 3rd position is:");
 		ob.delAtPos(3);
 		ob.display();
+		System.out.println("\nAdding two elements at last");
+		ob.insertAtEnd(32);
+		ob.insertAtEnd(21);
+		ob.display();
+		//deleting middle element
+		System.out.println("\nThe list after deleting the mid element:");
+		ob.delAtMid();
+		ob.display();
+		//Searching Element in a linkedList
+		System.out.println("\nThe Searched element 13 is present:"+ob.searchElement(13));
+		System.out.println("\nThe Searched element 23 is present:"+ob.searchElement(23));
+		
+		//inserting a few elements at the last
+		ob.insertAtEnd(12);
+		ob.insertAtEnd(18);
+		ob.display();
+		//Reverse the linkedList
+		System.out.println("\nThe original LinkedList is:");
+		ob.display();
+//		System.out.println("\nThe reversed LinkedList is:");
+//		ob.reverseLL();
+//		ob.display();
+		
+		//finding mid element
+		System.out.println();
+		ob.findMid();
+		
+		//find nth node from the last of a linked list
+		System.out.println();
+		ob.findnthFromLast(4);
+		
+		
 	}
 	
 }

@@ -132,6 +132,5 @@ public static ListNode head;
 		System.out.println("The Linked List after removing the loop is:");
 		ob.removeLoop();
 		ob.display();
-		
 	}
 }

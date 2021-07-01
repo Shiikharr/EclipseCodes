@@ -58,6 +58,7 @@ public class subArrayWithSumZero {
 				map.put(sum, 1);
 			}
 		}
+		System.out.println(map);
 		if(count!=0)
 			return true;
 		else

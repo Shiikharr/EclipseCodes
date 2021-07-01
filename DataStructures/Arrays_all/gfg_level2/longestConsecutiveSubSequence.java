@@ -1,8 +1,7 @@
 package gfg_level2;
 
-import java.util.Arrays;
+
 import java.util.HashMap;
-import java.util.HashSet;
 
 public class longestConsecutiveSubSequence {
 

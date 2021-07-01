@@ -3,6 +3,7 @@
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="src" path="Arrays_all"/>
 	<classpathentry kind="src" path="LinkedLists_all"/>
+	<classpathentry kind="src" path="Pre-Placement CheckList"/>
 	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER">
 		<attributes>
 			<attribute name="module" value="true"/>

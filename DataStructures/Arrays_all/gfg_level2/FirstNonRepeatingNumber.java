@@ -37,7 +37,7 @@ public class FirstNonRepeatingNumber {
 			int count =map.getOrDefault(a[i], 0);
 			map.put(a[i], count + 1);
 		}
-//		System.out.println(map);
+		System.out.println(map);
 		for(int i=0;i<n;i++)
 		{
 			if(map.get(a[i])==1)

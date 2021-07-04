@@ -1,5 +1,7 @@
 package LinkedList;
 
+import java.util.NoSuchElementException;
+
 public class DoublyLinkedList {
 
 	private ListNode head;
@@ -91,6 +93,34 @@ public class DoublyLinkedList {
 	      }       
 	    }
 	}
+	
+	public ListNode deletefrombeg()
+	{
+		if(isEmpty())
+			throw new NoSuchElementException();
+		ListNode temp=head;
+		if(head==tail)
+			tail=null;
+		else
+			head.next.previous=null;
+		head=head.next;
+		temp.next=null;
+		return temp;
+	}
+	
+	public ListNode deleteLast()
+	{
+		if(isEmpty())
+			throw new NoSuchElementException();
+		ListNode temp=tail;
+		if(head==tail)
+			head=null;
+		else
+			tail.previous.next=null;
+		tail=tail.previous;
+		temp.previous=null;
+		return temp;
+	}
 	 
 	public void printForward()
 	{
@@ -134,6 +164,17 @@ public class DoublyLinkedList {
 		System.out.println();
 		ob.insertAtPos(13, 3);
 		ob.printForward();
+		//delete element from the start
+		System.out.println();
+		System.out.println("The element deleted from the start is: "+ob.deletefrombeg().data);
+		System.out.println("The new list is:");
+		ob.printForward();
+		//delete element from last
+		System.out.println();
+		System.out.println("The element deleted from the last is: "+ob.deleteLast().data);
+		System.out.println("The new list is:");
+		ob.printForward();
+		
 	}
 
 }

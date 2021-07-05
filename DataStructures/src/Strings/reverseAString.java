@@ -6,7 +6,7 @@ public class reverseAString {
 
 	public static void main(String[] args) {
 		
-		String s="Shikhar.is.a.good.boy";
+		String s="i.like.this.program.very.much";
 		reverse(s);
 
 	}
@@ -23,7 +23,15 @@ public class reverseAString {
 			start++;
 			end--;
 		}
-		System.out.println(Arrays.toString(a));
+		String st="";
+		for(int i=0;i<a.length;i++)
+		{
+			if(i==0)
+	            st+=a[i];
+	       else
+	         st+="."+a[i];
+		}
+		System.out.println(st);
 	}
 
 }

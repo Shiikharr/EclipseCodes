@@ -6,7 +6,7 @@ public class AllsubstringsOfString {
 	
 	public static void main(String[] args) {
 
-		String s="abc";
+		String s="abcd";
 		String current="";
 		int i=0;
 		printsub(s,i,current);

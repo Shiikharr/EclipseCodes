@@ -24,6 +24,8 @@ public class OperationsOnBTree {
 		TreeNode fourth=new TreeNode(4);
 		TreeNode fifth=new TreeNode(5);
 		TreeNode six=new TreeNode(6);
+		TreeNode seven=new TreeNode(7);
+		TreeNode eight=new TreeNode(8);
 		
 		root=first;
 		first.left=second;
@@ -31,6 +33,8 @@ public class OperationsOnBTree {
 		second.left=fourth;
 		second.right=fifth;
 		third.left=six;
+		third.right=seven;
+		seven.right=eight;
 		return root;
 	}
 	
@@ -103,6 +107,95 @@ public class OperationsOnBTree {
 			System.out.print(s.pop().data+" ");
 	}
 	
+	public int depthOfBTree(TreeNode root)
+	{
+		if(root==null)
+			return -1;
+		return (Math.max(depthOfBTree(root.left), depthOfBTree(root.right))+1);
+	}
+	public int MinHeight(TreeNode root)
+	{
+		if(root == null)
+			return 0;
+		Queue<TreeNode>q=new LinkedList<TreeNode>();
+		q.offer(root);
+		q.offer(null);
+		int minHeight=1;
+		while(!q.isEmpty())
+		{
+			TreeNode temp=q.poll();
+			if(temp!=null)
+			{
+			if(temp.left == null && temp.right==null)
+				return minHeight;
+			if(temp.left!=null)
+				q.offer(temp.left);
+			if(temp.right!=null)
+				q.offer(temp.right);
+			}
+			else
+			{
+				if(!q.isEmpty()) 
+				{
+					minHeight++;
+					q.offer(null);
+				}
+			}
+		}
+		return minHeight;
+	}
+	
+	public TreeNode deepestNode(TreeNode root)
+	{
+		TreeNode temp=null;
+		Queue<TreeNode>q=new LinkedList<TreeNode>();
+		q.offer(root);
+		while(!q.isEmpty())
+		{
+			temp=q.poll();
+			if(temp.left!=null)
+				q.offer(temp.left);
+			if(temp.right!=null)
+				q.offer(temp.right);
+		}
+		return temp;
+	}
+	public int CountLeafNodes(TreeNode root)
+	{
+		int count=0;
+		Queue<TreeNode>q=new LinkedList<TreeNode>();
+		q.offer(root);
+		while(!q.isEmpty())
+		{
+			TreeNode temp=q.poll();
+			if(temp.left==null && temp.right==null)
+				count++;
+			if(temp.left!=null)
+				q.offer(temp.left);
+			if(temp.right!=null)
+				q.offer(temp.right);
+		}
+		return count;
+		
+	}
+	public int CountHalfNodes(TreeNode root)
+	{
+		int count=0;
+		Queue<TreeNode>q=new LinkedList<TreeNode>();
+		q.offer(root);
+		while(!q.isEmpty())
+		{
+			TreeNode temp=q.poll();
+			if((temp.left==null && temp.right!=null) || (temp.right==null && temp.left!=null))
+				count++;
+			if(temp.left!=null)
+				q.offer(temp.left);
+			if(temp.right!=null)
+				q.offer(temp.right);
+		}
+		return count;
+	}
+	
 	public static void main(String[] args) {
 		OperationsOnBTree ob=new OperationsOnBTree();
 		sc=new Scanner(System.in);
@@ -112,6 +205,13 @@ public class OperationsOnBTree {
 		System.out.println("The size of the binary tree is without recursion:"+ob.sizeWithoutRecursion(node));
 		System.out.println("The reverse level order traversal is:");
 		ob.levelOrderReverse(node);
+		System.out.println("\nMaximum Depth of Binary tree is:"+ob.depthOfBTree(node));
+		System.out.println("\nMinimum Depth of Binary tree is:"+ob.MinHeight(node));
+		System.out.println("\nThe deepest node in the tree is:"+ob.deepestNode(node).data);
+		System.out.println("\nThe list after deleting node 8 is:");
+		System.out.println("\nThe number of leaf nodes are:"+ob.CountLeafNodes(node));
+		TreeNode node2=ob.createBTree();
+		System.out.println("The number of half nodes are:"+ob.CountHalfNodes(node2));
 	}
 
 }

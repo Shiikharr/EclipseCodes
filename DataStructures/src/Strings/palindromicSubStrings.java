@@ -4,7 +4,7 @@ public class palindromicSubStrings {
 
 	public static void main(String[] args) {
 
-		String s="aaaa";
+		String s="abac";
 		String current="";
 		int index=0;
 		palinsubstring(s,index,current);

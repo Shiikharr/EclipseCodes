@@ -38,7 +38,7 @@ public class postfixToInfix {
 	}
 	
 	public static void main(String[] args) {
-		String s="ab*c+";
+		String s="ab-de+f*/";
 		System.out.println("Postfix:"+s+"\nInfix:"+convertToInfix(s));
 		String s2="ABC/-AK/L-*";
 		System.out.println("\nPostfix:"+s2+"\nInfix:"+convertToInfix(s2));

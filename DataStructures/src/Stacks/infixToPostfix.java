@@ -65,7 +65,7 @@ public class infixToPostfix {
 	
 	public static void main(String[] args) {
 
-		String exp="K+L-M*N+(O^P)*W/U/V*T+Q";
+		String exp="(a+b)*C+D/(E+F*G)-H";
 		System.out.println(convertInfixToPostFix(exp));
 
 	}

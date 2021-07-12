@@ -40,7 +40,7 @@ public class PrefixToPPostfix {
 	
 	public static void main(String[] args) {
 
-		String s="*+AB-CD";
+		String s="*-a/dc-/akl";
 		System.out.println("Prefix:"+s+"\nPostfix:"+convertToPostfix(s));
 
 	}

@@ -175,6 +175,36 @@ public class OperationsOnBTree2 {
 		}
 		return root;
 	}
+	public boolean printAncestors(TreeNode root, int n)
+	{
+		if(root==null)
+		{
+			return false;
+		}
+		if(root.data==n)
+			return true;
+		if(printAncestors(root.left,n)||printAncestors(root.right,n))
+		{
+			System.out.print(root.data+" ");
+			return true;
+		}
+		return false;
+	}
+	public TreeNode LCA(TreeNode root,int a,int b)
+	{
+		if(root==null)
+			return null;
+		if(root.data==a || root.data==b)
+			return root;
+		TreeNode left=LCA(root.left,a,b);
+		TreeNode right=LCA(root.right,a,b);
+		if(left!=null && right!=null)
+			return root;
+		else if(left!=null)
+			return left;
+		else
+			return right;
+	}
 	
 //	private void printArray(int[] path, int i) {
 //		for(int j=0;j<i;j++)
@@ -196,7 +226,11 @@ public class OperationsOnBTree2 {
 		ob.rootToLeafPaths(node);
 		//create mirror image of node2
 		TreeNode mirror=ob.createMirrorTree(node);
-		ob.show(mirror);
+		ob.show(  mirror);
+		System.out.println();
+		System.out.println(ob.printAncestors(node, 8));
+		System.out.println(ob.LCA(node, 6, 4).data);
+		
 	}
 
 }

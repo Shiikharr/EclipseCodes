@@ -106,10 +106,6 @@ public class BST {
 		return root;
 	}
 	
-//	public void delete(int data)
-//	{
-//		delete(root,data);
-//	}
 	
 	 TreeNode deleteNode(TreeNode root, int k)
 	{

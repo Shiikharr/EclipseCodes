@@ -186,6 +186,56 @@ public class BST {
 		prev=root.data;
 		return checkValidBST(root.right);
 	}
+	int c=0;
+	public TreeNode kthSmallestElement(TreeNode root,int k)
+	{
+		if(root==null)
+			return null;
+		TreeNode left=kthSmallestElement(root.left,k);
+		if(left!=null)
+			return left;
+		if(++c == k)
+			return root;
+		return kthSmallestElement(root.right,k);
+	}
+	
+	public TreeNode floorValue(TreeNode root,int data)
+	{
+		TreeNode prev=null;
+		return floorValue(root,prev,data);
+	}
+	
+	private TreeNode floorValue(TreeNode root, TreeNode prev, int data) {
+		if(root==null)
+			return null;
+		TreeNode left=floorValue(root.left,prev,data);
+		if(left!=null)
+			return left;
+		if(root.data == data)
+			return root;
+		if(root.data>data)
+			return prev;
+		prev=root;
+		return floorValue(root.right,prev,data);
+	}
+	public TreeNode CeilValue(TreeNode root,int data)
+	{
+		TreeNode prev=null;
+		return CeilValue(root,prev,data);
+	}
+	private TreeNode CeilValue(TreeNode root, TreeNode prev, int data) {
+		if(root==null)
+			return null;
+		TreeNode right=CeilValue(root.right,prev,data);
+		if(right!=null)
+			return right;
+		if(root.data==data)
+			return root;
+		if(root.data<data)
+			return prev;
+		prev=root;
+		return CeilValue(root.left,prev,data);
+	}
 
 	public static void main(String[] args) {
 		
@@ -221,6 +271,11 @@ public class BST {
 		ob.inOrder(ob.root);
 		//check if a bst is valid or not
 		System.out.println("\nThe BST is valid: "+ob.checkValidBST(ob.root));
+		//kth smallest element
+		System.out.println("The kth smallest element is: "+ob.kthSmallestElement(ob.root, 3).data);
+		//floor value
+		System.out.println("The floor value is: "+ob.floorValue(ob.root, 8).data);
+		System.out.println("The ceil value is: "+ob.CeilValue(ob.root, 7).data);
 	}
 
 }

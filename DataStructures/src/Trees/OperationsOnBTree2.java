@@ -2,6 +2,8 @@ package Trees;
 
 import java.util.*;
 
+
+
 public class OperationsOnBTree2 {
 
 	TreeNode root;
@@ -206,6 +208,19 @@ public class OperationsOnBTree2 {
 			return right;
 	}
 	
+	int prev=Integer.MIN_VALUE;
+	public boolean checkValidBST(TreeNode root)
+	{
+		if(root==null)
+			return true;
+		if(!checkValidBST(root.left))
+			return false;
+		if(root.data<prev)
+			return false;
+		prev=root.data;
+		return checkValidBST(root.right);
+	}
+	
 //	private void printArray(int[] path, int i) {
 //		for(int j=0;j<i;j++)
 //		{
@@ -230,6 +245,7 @@ public class OperationsOnBTree2 {
 		System.out.println();
 		System.out.println(ob.printAncestors(node, 8));
 		System.out.println(ob.LCA(node, 6, 4).data);
+		System.out.println("The tree is a valid BST: "+ob.checkValidBST(node));
 		
 	}
 

@@ -173,6 +173,19 @@ public class BST {
 	        return root;
 	    }
 	}
+	
+	 int prev=Integer.MIN_VALUE;
+	public boolean checkValidBST(TreeNode root)
+	{
+		if(root==null)
+			return true;
+		if(!checkValidBST(root.left))
+			return false;
+		if(root.data<prev)
+			return false;
+		prev=root.data;
+		return checkValidBST(root.right);
+	}
 
 	public static void main(String[] args) {
 		
@@ -206,6 +219,8 @@ public class BST {
 		ob.deleteNode(ob.root, 8);
 		System.out.println();
 		ob.inOrder(ob.root);
+		//check if a bst is valid or not
+		System.out.println("\nThe BST is valid: "+ob.checkValidBST(ob.root));
 	}
 
 }

@@ -5,6 +5,7 @@ public class MatrixChainMultiplication {
 	public static void main(String[] args) {
 		int p[] = {10, 20, 30, 40, 30};
 		System.out.println("The minimum number of multiplications are: "+matrixMulti(p,1,p.length-1));
+		//size of t array depends upon the constraints given in question 
 		int t[][]=new int[p.length][p.length];
 		for(int i[]:t)
 		{
